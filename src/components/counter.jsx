@@ -2,16 +2,16 @@ import React, { Component } from "react";
 class Counter extends Component {
   state = {
     count: 0,
-    tags: [],
+    tags: ["tag1", "tag2", "tag3"],
   };
   styles = {
     fontSize: 50,
     fontWeight: "bold",
   };
 
-  handleIncrement = product => {
+  handleIncrement = () => {
     console.log("Increment Clicked", this); //Arrow function binds this keyword
-      console.log(product);
+
     this.setState({ count: this.state.count + 1 }); // Equals to this.state.count++;
   };
 
@@ -33,7 +33,7 @@ class Counter extends Component {
           {this.formatCount()}
         </span>
         <button
-          onClick={() =< this.handleIncrement(product) }
+          onClick={this.handleIncrement}
           className="btn btn-secondary btn-sm"
         >
           Increment
