@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 class Counter extends Component {
   state = {
-    count: this.props.value,
+    count: this.props.counter.value,
   };
   styles = {
     fontSize: 50,
@@ -13,7 +13,7 @@ class Counter extends Component {
   };
 
   render() {
-    console.log(this.props);
+    //console.log(this.props);
     return (
       <div>
         {this.props.children}
@@ -27,7 +27,7 @@ class Counter extends Component {
           Increment
         </button>
         <button
-          onClick={this.props.onDelete}
+          onClick={() => this.props.onDelete(this.props.counter.id)}
           className="btn btn-danger btn-sm m-2"
         >
           Delete
