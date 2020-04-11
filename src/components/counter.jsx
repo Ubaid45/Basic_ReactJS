@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 class Counter extends Component {
-  
+  componentDidUpdate(prevProps, prevState){
+console.log("PrevProps: ", prevProps);
+console.log("PrevState: ", prevState);
+if(prevProps.counter.value !== this.props.counter.value){
+  // AJAX call and get new data from server
+}
+  }
   styles = {
     fontSize: 50,
     fontWeight: "bold",
