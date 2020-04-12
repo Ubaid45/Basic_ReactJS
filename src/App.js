@@ -4,10 +4,7 @@ import Counters from "./components/counters";
 import './App.css';
 
 class App extends Component{
-  constructor(){
-    super();
-    console.log("App - constructor");
-  }
+
   state = {
   counters: [
     { id: 1, value: 4 },
@@ -16,14 +13,24 @@ class App extends Component{
     { id: 4, value: 0 },
   ],
 };
-componentDidMount(){
+/*componentDidMount(){
   console.log("App - mounted");
-}
+}*/
 handleIncrement = (counter) => {
   const counters = [...this.state.counters]; // clone
   const index = counters.indexOf(counter);
   counters[index] = { ...counter };
   counters[index].value++; // directly modify counter object defined in state
+  //console.log(this.state.counters[0]);
+  this.setState({ counters });
+};
+
+handleDecrement = (counter) => {
+  console.log("Handle Decrement");
+  const counters = [...this.state.counters]; // clone
+  const index = counters.indexOf(counter);
+  counters[index] = { ...counter };
+  counters[index].value--; // directly modify counter object defined in state
   //console.log(this.state.counters[0]);
   this.setState({ counters });
 };
@@ -50,8 +57,10 @@ render(){
         <Counters 
           counters = {this.state.counters}
           onDelete = {this.handleDelete}
-          onReset = {this.handleReset}
-          onIncrement = {this.handleIncrement}/>
+          onResets = {this.handleReset}
+          onIncrement = {this.handleIncrement}
+          onDecrement={this.handleDecrement}
+          />
       </main>
     </React.Fragment>
   );
